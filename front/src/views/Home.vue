@@ -4,7 +4,10 @@
       <AuthModal class="AuthModal" @Authorized="Authorized" v-show="isModalVision" />
     </transition>
     <userList class="userList" :users="users" />
-    <messages :messages="messages" />
+    <div class="rightContentWrapper">
+      <messages :messages="messages" :userData="userData" />
+      <SendMessage />
+    </div>
   </div>
 </template>
 
@@ -12,6 +15,7 @@
 import AuthModal from '@/components/AuthModal.vue'
 import userList from '@/components/userList.vue'
 import messages from '@/components/messages.vue'
+import SendMessage from '@/components/SendMessage.vue'
 import axios from 'axios'
 export default {
   name: 'Home',
@@ -24,7 +28,8 @@ export default {
   components: {
     AuthModal,
     userList,
-    messages
+    messages,
+    SendMessage
   },
   methods: {
     Authorized (data) {
@@ -40,14 +45,17 @@ export default {
     }
   },
   mounted () {
-    setInterval(this.updateData, 500)
+    setInterval(this.updateData, 15000)
   }
 }
 </script>
 
 <style lang="sass" scoped>
   *
-    outline: 1px solid red
+    animation-name: rainbow
+    animation-duration: 10s
+    animation-timing-function: linear
+    animation-iteration-count: infinite
   .wrapper
     width: 100vw
     height: 100vh
@@ -60,4 +68,22 @@ export default {
     transition-delay: .2s
   .fade-enter, .fade-leave-active
     opacity: 0
+  .rightContentWrapper
+    width: 80vw
+    height: 100vh
+  @keyframes rainbow
+    0%
+      color: red
+    15%
+      color: orange
+    30%
+      color: yellow
+    45%
+      color: green
+    60%
+      color: lightblue
+    75%
+      color: blue
+    100%
+      color: purple
 </style>

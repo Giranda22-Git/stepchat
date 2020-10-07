@@ -22,6 +22,12 @@ export default {
 body{
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+ul{
+  padding: 0;
+  list-style-type: none;
 }
 
 #nav {
