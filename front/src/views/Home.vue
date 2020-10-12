@@ -6,7 +6,7 @@
     <userList class="userList" :users="users" />
     <div class="rightContentWrapper">
       <messages :messages="messages" :userData="userData" />
-      <SendMessage />
+      <SendMessage :userData="userData" />
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
       this.userData = data
     },
     async updateData () {
-      await axios.get('http://localhost:3000/')
+      await axios.get('http://api.stepchat.site/')
         .then(response => {
           this.users = response.data.users
           this.messages = response.data.messages
@@ -45,17 +45,18 @@ export default {
     }
   },
   mounted () {
-    setInterval(this.updateData, 15000)
+    setInterval(this.updateData, 1000)
   }
 }
 </script>
 
 <style lang="sass" scoped>
   *
-    animation-name: rainbow
-    animation-duration: 10s
+    animation-name: rainbow !important
+    animation-duration: 20s
     animation-timing-function: linear
     animation-iteration-count: infinite
+    box-sizing: border-box
   .wrapper
     width: 100vw
     height: 100vh
@@ -84,6 +85,8 @@ export default {
       color: lightblue
     75%
       color: blue
-    100%
+    90%
       color: purple
+    100%
+      color: red
 </style>

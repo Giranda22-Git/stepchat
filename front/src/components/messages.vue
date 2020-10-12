@@ -2,12 +2,12 @@
   <div class="wrapper">
     <div class="messages-block">
       <div class="message-block"
-        v-for="message in messages"
-        :key="message"
+        v-for="(message, index) in messages"
+        :key="index + Math.random().toString(36).slice(-8)"
         :class="message.name === userData.name ? 'self' : 'noself'"
       >
         <div class="from">
-          {{ message.name }}
+          {{ message.name }}:
         </div>
         <div class="text">
           {{ message.text }}
@@ -34,14 +34,31 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  *
-    outline: 1px solid red
   .self
     align-self: flex-end !important
   .wrapper
     width: 80vw !important
     height: 80vh !important
     border: 1px solid aqua
+    border-left: none
+    border-right: none
+    padding-left: 3%
+    ::-webkit-scrollbar
+      width: 3px
+      height: 3px
+    ::-webkit-scrollbar-button
+      background-color: aqua !important
+    ::-webkit-scrollbar-track
+      background-color: black
+    ::-webkit-scrollbar-track-piece
+      background-color: black !important
+    ::-webkit-scrollbar-thumb
+      height: 50px
+      background-color: aqua
+    ::-webkit-scrollbar-corner
+      background-color: black
+    ::-webkit-resizer
+      background-color: aqua
     .messages-block
       width: 100%
       height: 100%
@@ -50,11 +67,17 @@ export default {
       flex-direction: column
       .message-block
         width: 50%
-        height: 10vh
-        min-height: 100px
-        background-color: rgba(210, 27, 227, 0.4)
         border-radius: 24px
-        display: flex
-        justify-content: center
-        align-items: center
+        padding: 2%
+        font-family: sans-serif
+        .from
+          width: 100%
+          height: 20%
+          font-size: 2.3vh
+          text-align: left
+        .text
+          width: 100%
+          height: 80%
+          font-size: 2vh
+          text-align: left
 </style>

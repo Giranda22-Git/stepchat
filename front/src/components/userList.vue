@@ -2,8 +2,8 @@
   <div class="wrapper">
     <ul>
       <li
-      v-for="user in users"
-      :key="user"
+      v-for="(user, index) in users"
+      :key="index + Math.random().toString(36).slice(-8)"
       >
         {{ user }}
       </li>
@@ -24,10 +24,27 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  ::-webkit-scrollbar
+    width: 3px
+    height: 3px
+  ::-webkit-scrollbar-button
+    background-color: aqua
+  ::-webkit-scrollbar-track
+    background-color: black
+  ::-webkit-scrollbar-track-piece
+    background-color: black !important
+  ::-webkit-scrollbar-thumb
+    height: 50px
+    background-color: aqua
+  ::-webkit-scrollbar-corner
+    background-color: black
+  ::-webkit-resizer
+    background-color: aqua
   .wrapper
     width: 20vw !important
     height: 100vh !important
     border: 1px solid aqua
+    border-right: none
     display: flex
     justify-content: flex-start
     align-items: flex-start

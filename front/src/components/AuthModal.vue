@@ -23,7 +23,7 @@ export default {
       const params = {
         name: $('.AuthName').val()
       }
-      await axios.post('http://localhost:3000/user', params)
+      await axios.post('http://api.stepchat.site/user', params)
         .then(response => {
           if (response.data !== 'OK') {
             sweetalert2.fire({
