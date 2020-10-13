@@ -34,8 +34,9 @@ export default {
   .wrapper
     width: 80vw !important
     height: 20vh !important
-    border: 1px solid aqua
+    border: 1px solid
     border-left: none
+    box-shadow: 0 0 15px 5px
     form
       width: 100%
       height: 100%
@@ -44,13 +45,13 @@ export default {
       align-items: center
       .submit
         width: 10%
-        height: 50%
-        color: aqua
-        font-size: 2.3vh
+        height: calc(50% + 1px)
+        color: inherit
+        font-size: 2.6vh
         background-color: transparent
         cursor: pointer
         border: none
-        border-bottom: 1px solid silver
+        border-bottom: 1px solid
         transition: border .3s
         padding: 0
         outline: none
@@ -60,18 +61,26 @@ export default {
         width: 80%
         height: 50%
         border: none
-        border-bottom: 1px solid silver
+        border-bottom: 1px solid
         background-color: transparent
         outline: none !important
         font-size: 2vh
         font-family: sans-serif
-        color: white
-        transition: border .3s
+        transition: color .3s
+        color: aqua
         padding: 0
         animation-name: rainbow !important
         animation-duration: 20s
         animation-timing-function: linear
         animation-iteration-count: infinite
         &:focus
-          border-bottom-color: aqua
+          color: inherit
+      ::-webkit-input-placeholder
+        color: inherit
+      ::-moz-placeholder
+        color: inherit
+      :-moz-placeholder
+        color: inherit
+      :-ms-input-placeholder
+        color: inherit
 </style>

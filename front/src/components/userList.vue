@@ -43,7 +43,7 @@ export default {
   .wrapper
     width: 20vw !important
     height: 100vh !important
-    border: 1px solid aqua
+    border: 1px solid
     border-right: none
     display: flex
     justify-content: flex-start
