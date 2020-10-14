@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" vue-chat-scroll>
+  <div class="wrapper" v-chat-scroll = " {smooth: true, notSmoothOnInit: true} " id="messages_block">
     <div class="message-block"
       v-for="(message, index) in messages"
       :key="index + Math.random().toString(36).slice(-8)"
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+const $ = require('jquery')
 export default {
   name: 'messages',
   props: {
@@ -26,6 +27,16 @@ export default {
     userData: {
       type: Object,
       default: () => {}
+    }
+  },
+  watch: {
+    messages: function (newVal, oldVal) {
+      if (newVal.length !== oldVal.length) {
+        const block = document.getElementById('messages_block')
+        $('#messages_block').animate({
+          scrollTop: $('#messages_block').offset().top + block.scrollHeight
+        }, 'slow')
+      }
     }
   }
 }

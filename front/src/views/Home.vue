@@ -21,7 +21,9 @@ export default {
   name: 'Home',
   data: () => ({
     isModalVision: true,
-    userData: null,
+    userData: {
+      name: 'NewUser'
+    },
     users: null,
     messages: null
   }),
