@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ul>
-      <input type="text" class="sort">
+      <input type="file" class="sort">
       <li
       v-for="(user, index) in users"
       :key="index + Math.random().toString(36).slice(-8)"
