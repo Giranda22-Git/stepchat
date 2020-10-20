@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ul>
-      <input type="file" class="sort">
+      <input type="text" class="sort">
       <li
       v-for="(user, index) in users"
       :key="index + Math.random().toString(36).slice(-8)"
@@ -73,7 +73,7 @@ export default {
           background-color: lighten(#000, 20%)
       .sort
         width: 80%
-        height: 50%
+        height: 5%
         border: none
         border-bottom: 1px solid
         background-color: transparent

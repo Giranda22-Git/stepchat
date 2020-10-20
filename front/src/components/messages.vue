@@ -8,6 +8,7 @@
       <div class="from">
         {{ message.name }}:
       </div>
+      <img v-if="message.file !== null" :src="'http://localhost:3000/load/' + message.file.name" alt="Loading...">
       <div class="text">
         {{ message.text }}
       </div>
@@ -84,6 +85,8 @@ export default {
         font-size: 2.3vh
         text-align: left
         overflow-y: auto
+      img
+        max-width: 100%
       .text
         width: 100%
         height: calc( 100% - 50px )

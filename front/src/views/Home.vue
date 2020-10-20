@@ -39,7 +39,7 @@ export default {
       this.userData = data
     },
     async updateData () {
-      await axios.get('http://api.stepchat.site/')
+      await axios.get('http://localhost:3000/')
         .then(response => {
           this.users = response.data.users
           this.messages = response.data.messages

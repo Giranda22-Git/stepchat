@@ -19,6 +19,15 @@ const messages = []
 const users = []
 const files = []
 
+app.get("/load/:filename", (req, res) => {
+  const resFile = files.find(file => {
+    return file.name === req.params.filename
+  })
+
+  if(!resFile) res.sendStatus(404)
+
+  res.sendFile(resFile.path)
+})
 
 app.post("/upload", function (req, res, next) {
   let filedata = req.file
@@ -31,13 +40,14 @@ app.post("/upload", function (req, res, next) {
     fs.rename(filedata.path, `uploads/${filedata.originalname}`, err => {
       if (err) res.status(500).send("ошибка при присвоении имени файлу")
     })
-    files.push({
+    const resFile = {
       name: filedata.originalname,
       path: path.join(__dirname, '/uploads/', filedata.originalname),
       size: filedata.size,
       owner: req.body.owner
-    })
-    res.status(200).send("Файл загружен")
+    }
+    files.push(resFile)
+    res.status(200).send(resFile)
   }
   next()
 });
@@ -54,7 +64,7 @@ app.post('/message', (req, res) => {
   if (!message.name || !message.text) {
     res.sendStatus(500)
   } else {
-    messages.push({ name: message.name, text: message.text })
+    messages.push({ name: message.name, text: message.text, file: message.file ? message.file : null })
     res.sendStatus(200)
   }
 })
